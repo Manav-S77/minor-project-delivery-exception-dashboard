@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery Exception Management Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+
+        <div class="header-left">
+            <img class="logo" src="images/logo.png" alt="GreyAtom Logistics Logo">
+
+            <div class="company-info">
+                <h3>GreyAtom Logistics</h3>
+                <p>Internal Operations Portal</p>
+            </div>
+        </div>
+
+        <div class="header-center">
+            <h1>Delivery Exception Management Dashboard</h1>
+        </div>
+
+        <div class="header-right">
+            <div class="manager-info">
+                <h3>Operations Manager</h3>
+                <p>Dashboard Administrator</p>
+            </div>
+            <img class="manager-profile" src="images/profile.png" alt="Operations Manager">
+
+            
+        </div>
+
+    </header>
+
+    <main>
+
+        <!-- Report Exception -->
+
+       <section id="report-exception" class="card">
+
+            <div class="section-heading">
+                <h2>Report Delivery Exception</h2>
+                <p>Log a new delivery issue for operations review.</p>
+            </div>
+
+            <form id="exception-form">
+
+                <div class="form-field">
+                    <label for="delivery-id">Delivery ID</label>
+
+                    <input
+                        type="text"
+                        id="delivery-id"
+                        name="delivery-id"
+                        placeholder="Enter delivery ID"
+                        required>
+                </div>
+
+                <div class="form-field">
+                    <label for="customer-name">Customer Name</label>
+
+                    <input
+                        type="text"
+                        id="customer-name"
+                        name="customer-name"
+                        placeholder="Enter customer name"
+                        required>
+                </div>
+
+                <div class="form-field">
+                    <label for="issue-type">Issue Type</label>
+
+                    <select
+                        id="issue-type"
+                        name="issue-type"
+                        required>
+
+                        <option value="">Select Issue</option>
+                        <option value="Address Not Found">Address Not Found</option>
+                        <option value="Customer Not Available">Customer Not Available</option>
+                        <option value="Payment Issue">Payment Issue</option>
+                        <option value="Package Damaged">Package Damaged</option>
+
+                    </select>
+                </div>
+
+                <div class="form-field">
+
+                    <label>Priority</label>
+
+                  <div class="radio-group">
+
+                <div class="radio-option">
+                    <input type="radio" id="priority-low" name="priority" value="Low" required>
+                    <label class="low" for="priority-low">Low</label>
+                </div>
+
+                <div class="radio-option">
+                    <input type="radio" id="priority-medium" name="priority" value="Medium">
+                    <label class="medium" for="priority-medium">Medium</label>
+                </div>
+
+                <div class="radio-option">
+                    <input type="radio" id="priority-high" name="priority" value="High">
+                    <label class="high" for="priority-high">High</label>
+                </div>
+
+            </div>
+
+                </div>
+
+                <div class="form-field full-width">
+
+                    <label for="notes">Notes</label>
+
+                    <textarea
+                        id="notes"
+                        name="notes"
+                        rows="4"
+                        placeholder="Enter additional information..."></textarea>
+
+                </div>
+
+                <div class="button-container full-width">
+                    <button type="submit">Report Exception</button>
+                </div>
+
+            </form>
+
+        </section>
+
+        <!-- Dashboard Controls -->
+
+        <section id="dashboard-controls" class="card">
+
+            <div class="section-heading">
+                <h2>Dashboard Controls</h2>
+                <p>Filter and search delivery exceptions.</p>
+            </div>
+
+            <div class="filters-container">
+
+                <div class="filter-field">
+
+                    <label for="issue-filter">Issue Type</label>
+
+                    <select id="issue-filter" name="issue-filter">
+
+                        <option value="">All Issues</option>
+                        <option value="Address Not Found">Address Not Found</option>
+                        <option value="Customer Not Available">Customer Not Available</option>
+                        <option value="Payment Issue">Payment Issue</option>
+                        <option value="Package Damaged">Package Damaged</option>
+
+                    </select>
+
+                </div>
+
+                <div class="filter-field">
+
+                    <label for="status-filter">Status</label>
+
+                    <select id="status-filter" name="status-filter">
+
+                        <option value="">All Status</option>
+                        <option value="Open">Open</option>
+                        <option value="Resolved">Resolved</option>
+
+                    </select>
+
+                </div>
+
+                <div class="filter-field">
+
+                    <label for="search-input">Search</label>
+
+                    <input
+                        type="text"
+                        id="search-input"
+                        name="search-input"
+                        placeholder="Search Delivery ID or Customer Name">
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Statistics -->
+
+       <section id="statistics">
+
+            <div class="section-heading">
+                
+            </div>
+
+            <div class="statistics-container">
+
+                <div class="stat-card">
+
+                    <p>Total Exceptions</p>
+
+                    <h3 id="total-exceptions">0</h3>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <p>Open Issues</p>
+
+                    <h3 id="open-exceptions">0</h3>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <p>Resolved Issues</p>
+
+                    <h3 id="resolved-exceptions">0</h3>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Exception Log -->
+
+        <section id="exception-log" class="card">
+
+            <div class="exception-container">
+
+                <div class="exception-header">
+
+                    <h2>Exception Log</h2>
+
+                     <p><span id="record-count">0</span> Records Found</p>
+
+                </div>
+
+                <div class="table-wrapper">
+                    <table class="exception-table">
+                    
+                    
+                    <thead>
+
+                        <tr>
+
+                            <th>Delivery ID</th>
+                            <th>Customer Name</th>
+                            <th>Issue Type</th>
+                            <th>Priority</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="exception-table-body">
+
+                    </tbody>
+
+                </table>
+                </div>
+                
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+
+        <div class="footer-content">
+
+            <p>GreyAtom Logistics Internal Dashboard v1.0</p>
+
+        </div>
+
+    </footer>
+    <button id="help-button" class="help-button" aria-label="Help">
+        <img class="help-icon" src="images/qmark.png" alt="Help">
+    </button>
+<script src="script.js"></script>
+</body>
+</html>
